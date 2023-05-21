@@ -40,7 +40,7 @@ module.exports = {
           password,
           dbRes[0][0].password
         );
-        console.log(dbRes[0][0].password.length)
+        
         if (!authenticated) {
           return res.status(403).send("incorrect password");
         }

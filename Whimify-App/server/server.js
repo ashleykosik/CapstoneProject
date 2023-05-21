@@ -13,11 +13,22 @@ app.use(cors())
 
 
 
-const {userLogin, userSignup} = require('./controller/auth-controller.js')
+const {userLogin, userSignup } = require('./controller/auth-controller.js')
+const {userAddMovie, userAddTv, userAddBook, userAddGame, getMovies } = require('./controller/controller.js')
+
 
 //auth endpoints
-app.post('/api/login',userLogin)
-app.post('/api/signUp',userSignup)
+app.post('/api/login', userLogin)
+app.post('/api/signUp', userSignup)
+
+//form adds activities to database
+app.post('/api/movie', userAddMovie)
+app.post('/api/tv', userAddTv)
+app.post('/api/book', userAddBook)
+app.post('/api/game', userAddGame)
+
+//to-do page
+app.get('/api/getMovies/:userId', getMovies)
 
 
-app.listen(process.env.SERVER_PORT, () => console.log('Server running on port 5500'))
+app.listen(process.env.SERVER_PORT, () => console.log('Server running on port 4000'))

@@ -4,10 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add To Whimify</title>
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    
+    <main>
+        <section class="container" id="movies"> 
+            <h1>Add New Movie</h1>
+            <h2>Movie Title</h2>
+            <input type="text" id="movie-title"/>
+            <h2>Release Year</h2>
+            <input type="number" id="movie-year"/>
+            <h2>Prefered Way To Watch</h2>
+            <input type="text" id="movie-plat"/>
+            <button id="movieSubmit">Submit</button>
+        </section>
+        <section class="container" id="tv"> 
+            <h1>Add New TV Show</h1>
+            <h2>Series Title</h2>
+            <input type="text" id="tv-title"/>
+            <h2>Number of Seasons</h2>
+            <input type="number" id="tv-seasons"/>
+            <h2>Total Number of Episodes</h2>
+            <input type="number" id="tv-episodes"/>
+            <h2>Average Minutes Per Episode</h2>
+            <input type="number" id="tv-minutes"/>
+            <button id="tvSubmit">Submit</button>
+        </section>
+        <section class="container" id="books"> 
+            <h1>Add New Book</h1>
+            <h2>Book Title</h2>
+            <input type="text" id="book-title"/>
+            <h2>Author Name</h2>
+            <input type="text" id="book-author"/>
+            <h2>Number of Pages</h2>
+            <input type="number" id="book-pages"/>
+            <button id="bookSubmit">Submit</button>
+        </section>
+        <section class="container" id="games"> 
+            <h1>Add New Video Game</h1>
+            <h2>Game Title</h2>
+            <input type="text" id="game-title"/>
+            <h2>Game Platform</h2>
+            <input type="text" id="game-plat"/>
+        </section>
+        <button id="gameSubmit">Submit</button>
+    </main>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="form.js"></script>
 </body>
 </html>
