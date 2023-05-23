@@ -12,7 +12,7 @@ const createToken = (email, id) => {
     },
     SECRET,
     {
-      expiresIn: "2 days",
+      expiresIn: "24d",
     }
   );
 };
@@ -60,7 +60,7 @@ module.exports = {
       .then((dbRes) => {
         console.log(dbRes[0]);
         if (dbRes[0][0]) {
-          return res.status(400).send("Email is already in use, try login");
+          return res.status(400).send("Username already in use, try again.");
         } else {
           let salt = bcrypt.genSaltSync(10);
           const passhash = bcrypt.hashSync(password, salt);

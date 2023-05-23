@@ -4,63 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Whims</title>
+    <title>Whimify</title>
 </head>
 <body>
     <header> 
-        <h1>My Whims</h1>
-        <a href="./home.html">< Back to Dashbaord </a>
+        <h1 id="welcome">Welcome Back, </h1>
     </header>
     <main>
-       <section class="response">
-        <button id="viewMovies">View All Movies</button>
-       </section>
-            <h2>Movies</h2>
-            <section class="container-movies"> 
-            <ul>
-                <li><p id="to-do-movie-title">Movie Title</p>
-                    <p id="to-do-movie-year">(Release Year)</p>
-                    <p id="to-do-movie-plat">Watch On:   </p>
-                </li>
-            </section>        
-       
-       
-       
-        <!-- 
-                <li></li>
-                <li></li>
-            </ul>
-        </section>
-        <h2>TV Shows</h2>
-        <section class="container tv"> 
-            <ul>
-                <li><p id="to-do-tv-title">Series Title</p>
-                    <p id="to-do-tv-seasons">(Number of Seasons - </p>
-                    <p id="to-do-tv-episodes">Total Number of Episodes)</p>
-                    <p id="to-do-tv-minutes">Episode Length</p>
-                    <p id="to-do-tv-plat">Watch On:   </p>
-                </li>
-            </ul>
-        </section>
-        <h2>Books</h2>
-        <section class="container books"> 
-            <ul>
-                <li><p id="to-do-book-title">Book Title</p>
-                    <p id="to-do-book-author">Author Name</p>
-                    <p id="to-do-book-pages">(Number of Pages pgs)</p>
-                </li>
-            </ul>
-        </section>
-        <h2>Games</h2>
-        <section class="container games"> 
-            <ul>
-                <li><p id="to-do-game-title">Game Title</p>
-                    <p id="to-do-game-plat">on Platform</p>
-                </li>
-            </ul>
-        </section>
-    -->
+        <button onclick="window.location.href = 'form.html';">Add Whim</button>
+        <h2>My Whims</h2>
+        <section class="whims"> 
+        <section class="movies"> 
+            <h3>Movies</h3>
+            <ul class="movies-list">
+            </ul>   
+            <h3>Watched Movies</h3>
+            <ul class="movies-finished-list">
+            </ul>    
+        </section>     
+        
+        <section class="tv"> 
+            <h3>TV Shows</h3>
+            <ul class="tv-list">
+            </ul>   
+            <h3>Watched TV Shows</h3>
+            <ul class="tv-finished-list">
+            </ul>    
+        </section>   
 
+        <section class="books"> 
+            <h3>Books</h3>
+            <ul class="book-list">
+            </ul>   
+            <h3>Completed Books</h3>
+            <ul class="books-finished-list">
+            </ul>    
+        </section>  
+
+        <section class="games"> 
+            <h3>Games</h3>
+            <ul class="game-list">
+            </ul>   
+            <h3>Completed Games</h3>
+            <ul class="game-finished-list">
+            </ul>    
+        </section> 
+    </section>
     </main>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="to-do.js"></script>

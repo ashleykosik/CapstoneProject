@@ -1,6 +1,6 @@
 
 
-const baseURL = `http://localhost:4000`;
+const baseURL = `http://localhost:5500`;
 
 //submit buttons
 const movieSubmit = document.getElementById('movieSubmit')
@@ -19,6 +19,7 @@ const tvTitle = document.getElementById('tv-title')
 const tvSeasons = document.getElementById('tv-seasons')
 const tvEp = document.getElementById('tv-episodes')
 const tvMins = document.getElementById('tv-minutes')
+const tvPlat = document.getElementById('tv-plat')
 
 //books
 const bookTitle = document.getElementById('book-title')
@@ -41,7 +42,7 @@ const addMovie = (e) => {
         console.log(res.data);
         alert("new activity added")
         //run get all movies function
-        window.location.href = `./home.html`;
+        window.location.href = `./to-do.html`;
       })
       .catch((err) => console.log(err));
     }
@@ -50,13 +51,13 @@ const addMovie = (e) => {
 const addTv = (e) => {
     const userId = sessionStorage.getItem("userId")
     e.preventDefault()
-    let body = { title: tvTitle.value, seasons: tvSeasons.value, episodes: tvEp.value, minutes: tvMins.value, userId  }
+    let body = { title: tvTitle.value, seasons: tvSeasons.value, episodes: tvEp.value, minutes: tvMins.value, platform: tvPlat.value, userId  }
     axios.post(`${baseURL}/api/tv`, body)
       .then((res) => {
         console.log(res.data);
         alert("new activity added")
         //run get all movies function
-        window.location.href = `./home.html`;
+        window.location.href = `./to-do.html`;
       })
       .catch((err) => console.log(err));
     }
@@ -70,7 +71,7 @@ const addBook = (e) => {
         console.log(res.data);
         alert("new activity added")
         //run get all movies function
-        window.location.href = `./home.html`;
+        window.location.href = `./to-do.html`;
       })
       .catch((err) => console.log(err));
     }
@@ -84,7 +85,7 @@ const addGame = (e) => {
         console.log(res.data);
         alert("new activity added")
         //run get all movies function
-        window.location.href = `./home.html`;
+        window.location.href = `./to-do.html`;
       })
       .catch((err) => console.log(err));
     }

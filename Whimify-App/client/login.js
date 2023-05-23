@@ -1,5 +1,5 @@
 // utils 
-const baseURL = `http://localhost:4000`;
+const baseURL = `http://localhost:5500`;
 
 // buttons from index
 const userLogin = document.getElementById('userLogin')
@@ -20,16 +20,25 @@ const login = (e) => {
     //   if (res.status(403)) {
     //   alert('Password does not match')
     // }
-      //console.log(res.data);
+      
       let token = res.data.token;
+      let name = res.data.username
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("userId", res.data.id);
-      window.location.href = `./home.html`;
+      sessionStorage.setItem("username", name);
+      window.location.href = `./to-do.html`;
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      if (err.response.status === 400) {
+        alert("Account not found, please sign up")
+      } else if(err.response.status === 403) {
+        alert("Incorrect Password")
+      }else {
+        console.log(err)
+      }
+    })
+  }
       
-
-}
 //sign-up
 const signUp = (e) => {
   e.preventDefault()
@@ -43,10 +52,16 @@ const signUp = (e) => {
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("userId", res.data.id);
       alert(`Thank you for signing up. Please login.`)
-      window.location.href = `./index.html`;
+      window.location.href = `./login.html`;
     })
-    .catch((err) => console.log(err));
-}
+    .catch((err) => {
+      if (err.response.status === 400) {
+        alert("Username already in use, try again")
+      } else {
+        console.log(err)
+      }
+    })
+  }
 
 userLogin.addEventListener('click', login)
 newUserSubmit.addEventListener('click', signUp)
