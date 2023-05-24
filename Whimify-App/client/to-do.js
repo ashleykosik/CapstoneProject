@@ -12,7 +12,7 @@ function loggedIn (userId) {
     let username = sessionStorage.getItem("username")
     welcome.innerHTML += username
   } else {
-    window.location.href = `./login.html`;
+    window.location.href = `index.html`;
   }
 }
 
@@ -24,7 +24,7 @@ function toWatchMovie(data) {
       listItem += `<li><p class="title">${data.movie_title}</p>
                   <p class="year">(${data.year})</p>
                   <p class="platform">Watch On: ${data.platform}</p></li>
-                  <button class="" id="movie-${data['movie_id']}" onclick="markMovieCompleted(${data.movie_id})">Watched</button>
+                  <button class="complete" id="movie-${data['movie_id']}" onclick="markMovieCompleted(${data.movie_id})">Watched</button>
                   <button class="delete" id="" onclick="markMovieDelete(${data.movie_id})">Delete</button>`
       movie_section.innerHTML += listItem
 
@@ -34,8 +34,7 @@ function addCompletedMovie(data) {
   let movie_section = document.querySelector('.movies-finished-list');
   let listItem = ''
     listItem += `<li><p class="title">${data.movie_title}</p>
-                <p class="year">(${data.year})</p>
-                <p class="platform-past">Watched On: ${data.platform}</p></li>`
+                <p class="year">(${data.year})</p></li>`
   movie_section.innerHTML += listItem
 }
 
@@ -87,7 +86,7 @@ function toWatchTv(data) {
                   <p class="episodes">${data.total_episodes})</p>
                   <p class="platform">Watch On: ${data.platform}</p> 
                   <p class="minutes">(${data.average_episode_length_mins} minutes each)</p></li>
-                  <button class="" id="tv-${data['tv_id']}" onclick="markTvCompleted(${data.tv_id})">Watched</button>
+                  <button class="complete" id="tv-${data['tv_id']}" onclick="markTvCompleted(${data.tv_id})">Watched</button>
                   <button class="delete" id="" onclick="markTvDelete(${data.tv_id})">Delete</button>`
       tv_section.innerHTML += listItem
 }
@@ -100,7 +99,6 @@ function addCompletedTv(data) {
   let hours = parseInt(episodes * minutes)
     listItem += `<li><p class="title">${data.tv_title}</p>
     <p class="seasons">${data.number_of_seasons} Seasons</p>
-    <p class="platform">Watched On: ${data.platform}</p>
     <p class="hours">${hours} Total Hours</p></li>`
   tv_section.innerHTML += listItem
 }
@@ -148,7 +146,7 @@ function toReadBook(data) {
       listItem += `<li><p class="title">${data.book_title}</p>
                   <p class="author">By ${data.author}</p>
                   <p class="pages">(${data.total_pages} pages)</p></li>
-                  <button class="" id="book-${data['book_id']}" onclick="markBookCompleted(${data.book_id})">Read</button>
+                  <button class="complete" id="book-${data['book_id']}" onclick="markBookCompleted(${data.book_id})">Read</button>
                   <button class="delete" id="" onclick="markBookDelete(${data.book_id})">Delete</button>`
       book_section.innerHTML += listItem
 }
@@ -203,8 +201,8 @@ function toPlayGame(data) {
   let game_section = document.querySelector('.game-list');
     let listItem = ''
       listItem += `<li><p class="title">${data.game_title}</p>
-                  <p class="platform">${data.platform}</p></li>
-                  <button class="" id="game-${data['game_id']}" onclick="markGameCompleted(${data.game_id})">Completed</button>
+                  <p class="platform">(${data.platform})</p></li>
+                  <button class="complete" id="game-${data['game_id']}" onclick="markGameCompleted(${data.game_id})">Completed</button>
                   <button class="delete" id="" onclick="markGameDelete(${data.game_id})">Delete</button>`
       game_section.innerHTML += listItem
 }
@@ -213,7 +211,7 @@ function addCompletedGame(data) {
   let game_section = document.querySelector('.game-finished-list');
   let listItem = ''
     listItem += `<li><p class="title">${data.game_title}</p>
-                  <p class="platform">${data.platform}</p></li>`
+                  <p class="platform">(${data.platform})</p></li>`
   game_section.innerHTML += listItem
 }
 
