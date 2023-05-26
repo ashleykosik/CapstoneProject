@@ -40,8 +40,6 @@ const addMovie = (e) => {
     axios.post(`${baseURL}/api/movie`, body)
       .then((res) => {
         console.log(res.data);
-        alert("new activity added")
-        //run get all movies function
         window.location.href = `./to-do.html`;
       })
       .catch((err) => console.log(err));
@@ -55,8 +53,6 @@ const addTv = (e) => {
     axios.post(`${baseURL}/api/tv`, body)
       .then((res) => {
         console.log(res.data);
-        alert("new activity added")
-        //run get all movies function
         window.location.href = `./to-do.html`;
       })
       .catch((err) => console.log(err));
@@ -69,8 +65,6 @@ const addBook = (e) => {
     axios.post(`${baseURL}/api/book`, body)
       .then((res) => {
         console.log(res.data);
-        alert("new activity added")
-        //run get all movies function
         window.location.href = `./to-do.html`;
       })
       .catch((err) => console.log(err));
@@ -83,8 +77,6 @@ const addGame = (e) => {
     axios.post(`${baseURL}/api/game`, body)
       .then((res) => {
         console.log(res.data);
-        alert("new activity added")
-        //run get all movies function
         window.location.href = `./to-do.html`;
       })
       .catch((err) => console.log(err));
