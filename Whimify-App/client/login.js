@@ -1,5 +1,4 @@
 // utils 
-const baseURL = `http://localhost:5500`;
 
 // buttons from index
 const userLogin = document.getElementById('userLogin')
@@ -15,12 +14,8 @@ const newPassword = document.getElementById('newPassword')
 const login = (e) => {
   e.preventDefault()
   let body = { username: username.value, password: password.value }
-  axios.post(`${baseURL}/api/login`, body)
+  axios.post(`/api/login`, body)
     .then((res) => { 
-    //   if (res.status(403)) {
-    //   alert('Password does not match')
-    // }
-      
       let token = res.data.token;
       let name = res.data.username
       sessionStorage.setItem("token", token);
@@ -44,7 +39,7 @@ const signUp = (e) => {
   e.preventDefault()
   let body = { username: newUser.value, password: newPassword.value }
   axios
-    .post(`${baseURL}/api/signUp`, body)
+    .post(`/api/signUp`, body)
     .then(async (res) => {
       // console.log("hit signup");
       let token = await res.data.token;
@@ -66,25 +61,12 @@ const signUp = (e) => {
 userLogin.addEventListener('click', login)
 newUserSubmit.addEventListener('click', signUp)
 
+//login res ->
+  //   if (res.status(403)) {
+    //   alert('Password does not match')
+    // }
 
 
 
-
-
-// create display - turn form entry into container-li inside specific list
-// const createLi = (x) => {
-
-//     let displayLi = document.createElement("li")
-//     displayLi.classList.add()
-
-//     displayLi.innerHTML = `
-//     <li class="">
-//         <h class="card-title">${result.title}</h>
-//         <p class="card-text overflow-hidden">${result.overview}</p>
-//         <a href="#" onclick='addToList(${resultObj})' class="btn btn-primary">Add to list</a>
-//         </div>
-//         `;
-//     displaySection.appendChild(displayDiv)
-// }
 
 

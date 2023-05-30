@@ -2,8 +2,6 @@
 const welcome = document.getElementById('welcome')
 
 
-const baseURL = `http://localhost:5500`;
-
 
 // if logged in - display username
 function loggedIn (userId) {
@@ -44,14 +42,14 @@ function markMovieCompleted(id) {
     const elemToRemove = document.querySelector(selector)
     elemToRemove.remove()
     //changes status in table
-    axios.put(`${baseURL}/api/completeMovie/${id}`, {movieId: id})
+    axios.put(`/api/completeMovie/${id}`, {movieId: id})
         .then(() => location.reload())
         .catch(err => console.log(err))
 }
 
 function markMovieDelete(id) {
-  axios.delete(`${baseURL}/api/deleteMovie/${id}`, {movieId: id})
-      .then(() => findAllMovies())
+  axios.delete(`/api/deleteMovie/${id}`, {movieId: id})
+      .then(() => location.reload())
       .catch(err => console.log(err))
 }
 
@@ -68,7 +66,7 @@ function addMoviesView(data) {
 
 const findAllMovies = () => {
     const userId = sessionStorage.getItem("userId")
-    axios.get(`${baseURL}/api/getMovies/${userId}`)
+    axios.get(`/api/getMovies/${userId}`)
         .then((res) => { 
            //console.log(res.data)
           addMoviesView(res.data)
@@ -97,9 +95,8 @@ function addCompletedTv(data) {
   let episodes = `${data.total_episodes}` 
   let minutes = `${data.average_episode_length_mins}`
   let hours = parseInt(episodes * minutes)
-    listItem += `<li><p class="title">${data.tv_title}</p>
-    <p class="seasons">${data.number_of_seasons} Seasons</p>
-    <p class="hours">${hours} Total Hours</p></li>`
+    listItem += `<li><p class="title">${data.tv_title}</p><br>
+    <p class="seasons">${data.number_of_seasons} Seasons</p></li>`
   tv_section.innerHTML += listItem
 }
 
@@ -107,14 +104,14 @@ function markTvCompleted(id) {
   const selector = `#tv-${id}`
     const elemToRemove = document.querySelector(selector)
     elemToRemove.remove()
-    axios.put(`${baseURL}/api/completeTv/${id}`, {tvId: id})
+    axios.put(`/api/completeTv/${id}`, {tvId: id})
         .then(() => location.reload())
         .catch(err => console.log(err))
 }
 
 function markTvDelete(id) {
-  axios.delete(`${baseURL}/api/deleteTv/${id}`, {tvId: id})
-      .then(() => findAllTv())
+  axios.delete(`/api/deleteTv/${id}`, {tvId: id})
+      .then(() => location.reload())
       .catch(err => console.log(err))
 }
 
@@ -131,7 +128,7 @@ function addTvView(data) {
 
 const findAllTv = () => {
     const userId = sessionStorage.getItem("userId")
-    axios.get(`${baseURL}/api/getTv/${userId}`)
+    axios.get(`/api/getTv/${userId}`)
         .then((res) => { 
           addTvView(res.data)
         })
@@ -152,25 +149,25 @@ function toReadBook(data) {
 }
 
 function addCompletedBook(data) {
-  let book_section = document.querySelector('.book-finished-list');
+  let book_section = document.querySelector('.books-finished-list');
   let listItem = ''
     listItem += `<li><p class="title">${data.book_title}</p>
                   <p class="author">By ${data.author}</p></li>`
-  book_section.innerHTML = listItem
+  book_section.innerHTML += listItem
 }
 
 function markBookCompleted(id) {
   const selector = `#book-${id}`
     const elemToRemove = document.querySelector(selector)
     elemToRemove.remove()
-    axios.put(`${baseURL}/api/completeBook/${id}`, {bookId: id})
+    axios.put(`/api/completeBook/${id}`, {bookId: id})
         .then(() => location.reload())
         .catch(err => console.log(err))
 }
 
 function markBookDelete(id) {
-  axios.delete(`${baseURL}/api/deleteBook/${id}`, {bookId: id})
-      .then(() => findAllBooks())
+  axios.delete(`/api/deleteBook/${id}`, {bookId: id})
+      .then(() => location.reload())
       .catch(err => console.log(err))
 }
 
@@ -178,6 +175,7 @@ function addBookView(data) {
     //console.log(data)
     data.forEach((obj) => {
       if(obj.has_finished) {
+        console.log(obj)
         addCompletedBook(obj)
       } else {
         toReadBook(obj)
@@ -187,7 +185,7 @@ function addBookView(data) {
 
 const findAllBooks = () => {
     const userId = sessionStorage.getItem("userId")
-    axios.get(`${baseURL}/api/getBooks/${userId}`)
+    axios.get(`/api/getBooks/${userId}`)
         .then((res) => { 
           console.log(res.data)
           addBookView(res.data)
@@ -219,14 +217,14 @@ function markGameCompleted(id) {
   const selector = `#game-${id}`
     const elemToRemove = document.querySelector(selector)
     elemToRemove.remove()
-    axios.put(`${baseURL}/api/completeGame/${id}`, {gameId: id})
+    axios.put(`/api/completeGame/${id}`, {gameId: id})
         .then(() => location.reload())
         .catch(err => console.log(err))
 }
 
 function markGameDelete(id) {
-  axios.delete(`${baseURL}/api/deleteGame/${id}`, {gameId: id})
-      .then(() => findAllGames())
+  axios.delete(`/api/deleteGame/${id}`, {gameId: id})
+      .then(() => location.reload())
       .catch(err => console.log(err))
 }
 
@@ -243,7 +241,7 @@ function addGameView(data) {
 
 const findAllGames = () => {
     const userId = sessionStorage.getItem("userId")
-    axios.get(`${baseURL}/api/getGames/${userId}`)
+    axios.get(`/api/getGames/${userId}`)
         .then((res) => { 
           addGameView(res.data)
         })
