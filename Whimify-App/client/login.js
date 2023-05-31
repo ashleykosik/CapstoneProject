@@ -1,4 +1,5 @@
 // utils 
+const baseURL = `http://localhost:8888`;
 
 // buttons from index
 const userLogin = document.getElementById('userLogin')
@@ -14,7 +15,7 @@ const newPassword = document.getElementById('newPassword')
 const login = (e) => {
   e.preventDefault()
   let body = { username: username.value, password: password.value }
-  axios.post(`/api/login`, body)
+  axios.post(`${baseURL}/api/login`, body)
     .then((res) => { 
       let token = res.data.token;
       let name = res.data.username
@@ -39,7 +40,7 @@ const signUp = (e) => {
   e.preventDefault()
   let body = { username: newUser.value, password: newPassword.value }
   axios
-    .post(`/api/signUp`, body)
+    .post(`${baseURL}/api/signUp`, body)
     .then(async (res) => {
       // console.log("hit signup");
       let token = await res.data.token;
@@ -60,11 +61,6 @@ const signUp = (e) => {
 
 userLogin.addEventListener('click', login)
 newUserSubmit.addEventListener('click', signUp)
-
-//login res ->
-  //   if (res.status(403)) {
-    //   alert('Password does not match')
-    // }
 
 
 

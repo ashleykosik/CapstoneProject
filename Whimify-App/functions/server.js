@@ -10,11 +10,6 @@ const router = express.Router()
 app.use(express.json())
 app.use(cors())
 
-
-// make requests to database
-
-
-
 const {userLogin, userSignup } = require('../controller/auth-controller.js')
 const {userAddMovie, userAddTv, userAddBook, userAddGame, getMovies, completeMovie, deleteMovie, getTv, completeTv, deleteTv, getBooks, completeBook, deleteBook, getGames, completeGame, deleteGame } = require('../controller/controller.js')
 
