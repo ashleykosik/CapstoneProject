@@ -1,9 +1,11 @@
 
 require('dotenv').config()
 const express = require('express')
+const serverless = require('serverless-http')
 const cors = require('cors')
 const Sequelize = require('sequelize')
 const app = express()
+const router = express.Router()
 
 app.use(express.json())
 app.use(cors())
@@ -13,8 +15,8 @@ app.use(cors())
 
 
 
-const {userLogin, userSignup } = require('./controller/auth-controller.js')
-const {userAddMovie, userAddTv, userAddBook, userAddGame, getMovies, completeMovie, deleteMovie, getTv, completeTv, deleteTv, getBooks, completeBook, deleteBook, getGames, completeGame, deleteGame } = require('./controller/controller.js')
+const {userLogin, userSignup } = require('../controller/auth-controller.js')
+const {userAddMovie, userAddTv, userAddBook, userAddGame, getMovies, completeMovie, deleteMovie, getTv, completeTv, deleteTv, getBooks, completeBook, deleteBook, getGames, completeGame, deleteGame } = require('../controller/controller.js')
 
 
 //auth endpoints
@@ -41,3 +43,5 @@ app.get('/api/getGames/:userId', getGames)
 app.put('/api/completeGame/:gameId', completeGame)
 app.delete('/api/deleteGame/:gameId', deleteGame)
 
+app.use('/.netlify/functions/api', router)
+module.exports.handler = serverless(app)

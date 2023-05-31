@@ -1,4 +1,8 @@
 {
+  "main": "api.js",
+  "scripts": {
+    "build": "netlify deploy --prod"
+  },
   "dependencies": {
     "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
@@ -6,8 +10,11 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
+    "netlify-cli": "^15.2.0",
+    "netlify-lambda": "^2.0.16",
     "pg": "^8.11.0",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.31.1"
+    "sequelize": "^6.31.1",
+    "serverless-http": "^3.2.0"
   }
 }
