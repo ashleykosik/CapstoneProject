@@ -57,6 +57,11 @@ img {
     margin-top: 10%
 }
 
+.edit-button {
+  float: right;
+  margin: -25px 5px;
+}
+
 .login {
     background-color: #FFBB01;
     color: #404040;
