@@ -23,7 +23,7 @@ function toWatchMovie(data) {
                   <p class="year">(${data.year})</p>
                   <p class="platform">Watch On: ${data.platform}</p></li>
                   <button class="complete" id="movie-${data['movie_id']}" onclick="markMovieCompleted(${data.movie_id})">Watched</button>
-                  <button class="delete" id="" onclick="markMovieDelete(${data.movie_id})">Delete</button>`
+                  `
       movie_section.innerHTML += listItem
 
 }
